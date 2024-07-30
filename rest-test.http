@@ -1,0 +1,32 @@
+###
+POST http://127.0.0.1:3000/api/register
+Content-Type: application/json
+
+{
+    "username": "yako123",
+    "email": "prihantonoyako@gmail.com",
+    "password": "yako123",
+    "confirmedPassword": "yako123"
+}
+
+###
+POST http://127.0.0.1:3000/api/login
+Content-Type: application/json
+
+{
+    "identity": "prihantonoyako@gmail.com",
+    "password": "yako123"
+}
+
+###
+POST http://127.0.0.1:3000/api/createProfile
+###
+GET http://127.0.0.1:3000/api/getProfile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inlha28xMjMiLCJzdWIiOiI2NmE4Y2QxNDdjMTdmY2IxZWJkMTBlMGMiLCJpYXQiOjE3MjIzNTI5MjAsImV4cCI6MTcyMjM1NjUyMH0.oC0lvmh7q1TtWwKspBYE0-LzYQH7H6vwdmQ1v-VzSos
+
+###
+PATCH http://127.0.0.1:3000/api/updateProfile
+###
+GET http://127.0.0.1:3000/api/viewMessages
+###
+POST http://127.0.0.1:3000/api/sendMessage
