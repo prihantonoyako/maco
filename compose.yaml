@@ -9,25 +9,34 @@ services:
       - "3000:3000"
     environment:
       NODE_ENV: production
+      MONGO_URI: ${MONGO_URI}
+      MONGO_DB: ${MONGO_DB}
+      MINIO_ENDPOINT: ${MINIO_ENDPOINT}
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
+      MINIO_BUCKET: ${MINIO_BUCKET}
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      RABBITMQ_PORT: ${RABBITMQ_PORT}
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
     env_file:
       - .env
     depends_on:
       - mongo
       - minio
+      - rabbitmq
 
   mongo:
-    image: mongo:4.0
+    image: mongo:4.4
     container_name: mongo-db
     ports:
       - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     volumes:
       - mongo-data:/data/db
 
   rabbitmq:
     image: rabbitmq:3-management
+    container_name: rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
@@ -41,8 +50,8 @@ services:
     ports:
       - "9000:9000"
     environment:
-      - MINIO_ACCESS_KEY=miniouser
-      - MINIO_SECRET_KEY=miniopassword
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
     volumes:
       - minio-data:/data
     command: server /data

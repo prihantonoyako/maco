@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "01fe913f-bbc1-4352-961b-6bbf85ad2874",
+		"name": "Messsage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14398957"
+	},
+	"item": [
+		{
+			"name": "Send",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"senderId\": \"user1\",\r\n    \"receiverId\": \"user2\",\r\n    \"content\": \"Hello, User2!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/sendMessage",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"sendMessage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/viewMessages?senderId=user1&receiverId=user2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"viewMessages"
+					],
+					"query": [
+						{
+							"key": "senderId",
+							"value": "user1"
+						},
+						{
+							"key": "receiverId",
+							"value": "user2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
